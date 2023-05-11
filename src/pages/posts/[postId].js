@@ -1,4 +1,4 @@
-function Post(){
+function Post({ post }){
   return (
     <>
       <h2>
@@ -10,6 +10,17 @@ function Post(){
 }
 
 export default Post
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      {
+        params: { postId: '1' }
+      }
+    ],
+    fallback: false,
+  }
+}
 
 export async function getStaticProps(context){
   const { params } = context
